@@ -1,0 +1,580 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+    --primary: #6048d8;
+    --primary-hover: #523bc4;
+    --primary-light: #8875e8;
+
+    --bg: #090b12;
+    --box-bg: rgba(17, 20, 31, 0.92);
+    --input-bg: #1b1f2b;
+
+    --border: rgba(255, 255, 255, 0.08);
+
+    --text: #f7f7fb;
+    --text-sub: #9698a6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ==============================
+    로그인 전체
+================================ */
+
+.login-wrap {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 9, 16, 0.95) 0%,
+            rgba(7, 9, 16, 0.78) 40%,
+            rgba(7, 9, 16, 0.45) 100%
+        ),
+        url('/images/login-bg.jpg') center / cover no-repeat;
+}
+
+.login-inner {
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 100px;
+}
+
+/* ==============================
+    왼쪽 타이틀
+================================ */
+
+.title-box {
+    width: 48%;
+}
+
+.title-box h3 {
+    margin-bottom: 50px;
+
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.title-box h3 span {
+    color: var(--primary-light);
+}
+
+.title-box p {
+    margin-bottom: 18px;
+
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -1px;
+
+    white-space: pre-line;
+}
+
+/*
+현재 JSX는 줄바꿈이 없어서
+원하시면 p 안에 <br /> 하나 넣는 게 제일 편합니다.
+*/
+
+.title-box > span {
+    display: block;
+
+    color: var(--text-sub);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* ==============================
+    오른쪽 로그인 박스
+================================ */
+
+.input-box {
+    width: 100%;
+    max-width: 470px;
+
+    padding: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    background: var(--box-bg);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ==============================
+    로그인 / 회원가입 TAB
+================================ */
+
+.login-type {
+    position: relative;
+
+    display: flex;
+
+    width: 100%;
+    margin-bottom: 32px;
+
+    list-style: none;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.login-type li {
+    position: relative;
+
+    width: 50%;
+    padding: 0 0 17px;
+
+    color: #70727e;
+
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.login-type li:hover {
+    color: #fff;
+}
+
+/* 우선 로그인 첫 번째 활성화 */
+
+.login-type li:first-child {
+    color: #fff;
+}
+
+.login-type li.active::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+
+    width: 100%;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: var(--primary);
+}
+
+/* ==============================
+    공통 input
+================================ */
+
+.login-tab-box,
+.join-tab-box,
+.join-tab form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+.join-tab-box .email-check-box {display: flex; flex-direction:  row;}
+.join-tab-box .email-check-box button {margin: 0 0 0 6px}
+.join-tab-box button {    
+    width: 100%;
+    height: 54px;
+
+    margin-top: 6px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: transform 0.2s, filter 0.2s;}
+
+.login-wrap input[type='text'],
+.login-wrap input[type='password'],
+.login-wrap input[type='email'],
+.login-wrap input[type='pssword'] {
+    width: 100%;
+    height: 54px;
+
+    padding: 0 18px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: #fff;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
+}
+
+.login-wrap input::placeholder {
+    color: #666977;
+}
+
+.login-wrap input:focus {
+    border-color: rgba(96, 72, 216, 0.7);
+
+    background: #202432;
+
+    box-shadow: 0 0 0 3px rgba(96, 72, 216, 0.12);
+}
+
+/* 현재 JSX에 들어가 있는 애는 일단 숨김 */
+.login-tab-box , .join-tab-box {
+    display: none;
+}
+.login-tab-box.active , .join-tab-box.active {
+    display: flex;
+}
+
+/* ==============================
+    로그인 상태 유지
+================================ */
+
+.maintain-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 18px;
+    margin-bottom: 28px;
+
+    font-size: 13px;
+}
+
+.maintain-left {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.maintain-left input[type='checkbox'] {
+    appearance: none;
+
+    width: 17px;
+    height: 17px;
+
+    padding: 0;
+
+    border: 1px solid #454958;
+    border-radius: 4px;
+
+    background: #181b26;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.maintain-left input[type='checkbox']:checked {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+.maintain-left input[type='checkbox']:checked::after {
+    content: '';
+
+    position: absolute;
+
+    top: 2px;
+    left: 5px;
+
+    width: 4px;
+    height: 8px;
+
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+
+    transform: rotate(45deg);
+}
+
+.maintain-left label {
+    color: #c5c6ce;
+
+    cursor: pointer;
+}
+
+.maintain-label a {
+    color: #b7b8c1;
+
+    font-size: 13px;
+    text-decoration: none;
+
+    transition: color 0.2s;
+}
+
+.maintain-label a:hover {
+    color: #fff;
+}
+
+/* ==============================
+    로그인 버튼
+================================ */
+
+/* 지금 JSX에는 로그인 submit 버튼이 없으므로
+나중에 form 안에 아래 버튼을 넣으면 자동 적용
+
+<button type="submit">로그인</button>
+*/
+
+.login-tab-box button[type='submit'],
+.join-tab form > button[type='submit'] {
+    width: 100%;
+    height: 54px;
+
+    margin-top: 6px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s,
+        filter 0.2s;
+}
+
+.login-tab-box button[type='submit']:hover,
+.join-tab form > button[type='submit']:hover {
+    filter: brightness(1.08);
+}
+
+.login-tab-box button[type='submit']:active,
+.join-tab form > button[type='submit']:active {
+    transform: scale(0.99);
+}
+
+/* ==============================
+    회원가입
+================================ */
+
+/* 기본은 회원가입 폼 숨김 */
+.join-tab {
+    display: none;
+}
+
+.join-id-cheeck {
+    display: flex;
+
+    gap: 10px;
+}
+
+.join-id-cheeck input {
+    flex: 1;
+    min-width: 0;
+}
+
+.join-id-cheeck button {
+    flex-shrink: 0;
+
+    width: 95px;
+
+    border: 1px solid rgba(96, 72, 216, 0.5);
+    border-radius: 10px;
+
+    background: rgba(96, 72, 216, 0.1);
+
+    color: var(--primary-light);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.join-id-cheeck button:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ==============================
+    간편 로그인
+================================ */
+
+.easy-login {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 18px;
+    padding-top: 30px;
+
+    border-top: 1px solid var(--border);
+}
+
+.easy-login > span {
+    position: absolute;
+
+    top: -9px;
+    left: 50%;
+
+    padding: 0 14px;
+
+    background: #12151f;
+
+    color: #747784;
+
+    font-size: 12px;
+
+    transform: translateX(-50%);
+}
+
+.easy-login button {
+    position: relative;
+
+    width: 100%;
+    height: 50px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #1b1f2a;
+
+    color: #e9e9ed;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        background 0.2s,
+        border-color 0.2s;
+}
+
+.easy-login button:hover {
+    background: #232735;
+    border-color: rgba(255, 255, 255, 0.13);
+}
+
+/* Google 아이콘 자리 느낌 */
+
+.easy-login button:first-of-type::before {
+    content: 'G';
+
+    position: absolute;
+    left: 18px;
+
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Kakao */
+
+.easy-login button:last-of-type::before {
+    content: 'K';
+
+    position: absolute;
+    left: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #fee500;
+    color: #191919;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* ==============================
+    반응형
+================================ */
+
+@media (max-width: 900px) {
+    .login-inner {
+        justify-content: center;
+    }
+
+    .title-box {
+        display: none;
+    }
+
+    .input-box {
+        max-width: 460px;
+    }
+}
+
+@media (max-width: 520px) {
+    .login-wrap {
+        padding: 30px 16px;
+    }
+
+    .input-box {
+        padding: 30px 22px;
+
+        border-radius: 18px;
+    }
+}
